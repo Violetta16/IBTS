@@ -1,0 +1,4 @@
+﻿  Viola_App.cpp
+D:\Хорьков_DLL\Viola_App\Viola_App\Viola_App.cpp(9,1): warning C4005: DLLVIOLA_API: изменение макроопределения
+D:\Хорьков_DLL\Dll_Viola\Dll_Viola\Dll_Viola.h(10): message : см. предыдущее определение "DLLVIOLA_API"
+D:\Хорьков_DLL\Viola_App\Viola_App\Viola_App.cpp(13,2): error C3861: MyGroup: идентификатор не найден
