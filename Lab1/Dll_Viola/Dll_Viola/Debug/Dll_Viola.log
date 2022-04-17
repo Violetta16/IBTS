@@ -1,0 +1,5 @@
+﻿  Dll_Viola.cpp
+  LINK : не найден или не выполнена сборка D:\Хорьков_DLL\Dll_Viola\Debug\DLLVIOLA.dll при последней инкрементной компоновке; выполняется полная компоновка
+     Создается библиотека D:\Хорьков_DLL\Dll_Viola\Debug\DLLVIOLA.lib и объект D:\Хорьков_DLL\Dll_Viola\Debug\DLLVIOLA.exp
+DLLVIOLA.exp : warning LNK4070: директива /OUT:DLL_Viola.dll в .EXP отличается от имени выходного файла "D:\Хорьков_DLL\Dll_Viola\Debug\DLLVIOLA.dll"; директива игнорируется
+  Dll_Viola.vcxproj -> D:\Хорьков_DLL\Dll_Viola\Debug\DLLVIOLA.dll
