@@ -14,11 +14,17 @@ object Form1: TForm1
   OnClose = FormClose
   TextHeight = 15
   object Label1: TLabel
-    Left = 48
-    Top = 24
-    Width = 273
-    Height = 129
-    Caption = 'Label1'
+    Left = 40
+    Top = 72
+    Width = 9
+    Height = 45
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -33
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    Layout = tlCenter
   end
   object Button1: TButton
     Left = 40
