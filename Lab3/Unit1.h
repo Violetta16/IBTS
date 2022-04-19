@@ -28,6 +28,7 @@ __published:	// IDE-managed Components
           TColumnIndex Column, TVSTTextType TextType, UnicodeString &CellText);
 	void __fastcall Button2Click(TObject *Sender);
 	void __fastcall VirtualStringTree1AddToSelection(TBaseVirtualTree *Sender, PVirtualNode Node);
+	void __fastcall Button3Click(TObject *Sender);
 
 
 private:	// User declarations

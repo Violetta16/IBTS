@@ -127,3 +127,43 @@ void __fastcall TForm1::VirtualStringTree1AddToSelection(TBaseVirtualTree *Sende
 }
 //---------------------------------------------------------------------------
 
+void __fastcall TForm1::Button3Click(TObject *Sender)
+{
+  sqlite3* Database;
+  char* filename="Databases.db";
+  PVirtualNode choiseStr=VirtualStringTree1->GetFirstSelected();
+  if(choiseStr==NULL) return;
+
+  DBStruct *nodeData=(DBStruct*)VirtualStringTree1->GetNodeData(choiseStr);
+  AnsiString str="Delete from databases where id = "+(AnsiString)nodeData->Id+" ;";
+
+  sqlite3_stmt *pStatement;
+  char* errmsg;
+
+  if(sqlite3_open(
+  filename,
+  &Database
+  )){
+	 ShowMessage("Не удалось открыть БД");
+	 sqlite3_close(Database);
+  }
+
+  int result=sqlite3_prepare_v2(Database,str.c_str(),-1,&pStatement,NULL);
+	if(result!=SQLITE_OK){
+  errmsg=(char*)sqlite3_errmsg(Database);
+  sqlite3_close(Database);
+  return;
+  }
+
+  result=sqlite3_step(pStatement);
+  if(result!=SQLITE_DONE){
+  ShowMessage("Ошибка запроса");
+	 sqlite3_finalize(pStatement);
+	sqlite3_close(Database);
+	return;
+  }
+  	 sqlite3_finalize(pStatement);
+	sqlite3_close(Database);
+}
+//---------------------------------------------------------------------------
+
