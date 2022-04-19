@@ -162,8 +162,46 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 	sqlite3_close(Database);
 	return;
   }
-  	 sqlite3_finalize(pStatement);
+  sqlite3_finalize(pStatement);
 	sqlite3_close(Database);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::Button4Click(TObject *Sender)
+{
+   sqlite3* Database;
+  char* filename="Databases.db";
+  AnsiString str="Delete from databases;";
+
+  sqlite3_stmt *pStatement;
+  char* errmsg;
+
+  if(sqlite3_open(
+  filename,
+  &Database
+  )){
+	 ShowMessage("Не удалось открыть БД");
+	 sqlite3_close(Database);
+  }
+
+  int result=sqlite3_prepare_v2(Database,str.c_str(),-1,&pStatement,NULL);
+	if(result!=SQLITE_OK){
+  errmsg=(char*)sqlite3_errmsg(Database);
+  sqlite3_close(Database);
+  return;
+  }
+
+  result=sqlite3_step(pStatement);
+  if(result!=SQLITE_DONE){
+  ShowMessage("Ошибка запроса");
+	 sqlite3_finalize(pStatement);
+	sqlite3_close(Database);
+	return;
+  }
+  sqlite3_finalize(pStatement);
+  sqlite3_close(Database);
+  VirtualStringTree1->Clear();
+
 }
 //---------------------------------------------------------------------------
 
