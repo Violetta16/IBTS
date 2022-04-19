@@ -12,6 +12,45 @@ object Form1: TForm1
   Font.Style = []
   Position = poDesigned
   TextHeight = 15
+  object Label1: TLabel
+    Left = 192
+    Top = 200
+    Width = 24
+    Height = 15
+    Caption = #1048#1084#1103
+  end
+  object Label2: TLabel
+    Left = 192
+    Top = 255
+    Width = 55
+    Height = 15
+    Caption = #1054#1087#1080#1089#1072#1085#1080#1077
+  end
+  object Label3: TLabel
+    Left = 192
+    Top = 311
+    Width = 40
+    Height = 15
+    Caption = #1056#1072#1079#1084#1077#1088
+  end
+  object Label4: TLabel
+    Left = 192
+    Top = 221
+    Width = 3
+    Height = 15
+  end
+  object Label5: TLabel
+    Left = 192
+    Top = 276
+    Width = 3
+    Height = 15
+  end
+  object Label6: TLabel
+    Left = 192
+    Top = 332
+    Width = 3
+    Height = 15
+  end
   object VirtualStringTree1: TVirtualStringTree
     Left = 16
     Top = 8
@@ -22,6 +61,7 @@ object Form1: TForm1
     ParentShowHint = False
     ShowHint = False
     TabOrder = 0
+    OnAddToSelection = VirtualStringTree1AddToSelection
     OnGetText = VirtualStringTree1GetText
     Touch.InteractiveGestures = [igPan, igPressAndTap]
     Touch.InteractiveGestureOptions = [igoPanSingleFingerHorizontal, igoPanSingleFingerVertical, igoPanInertia, igoPanGutter, igoParentPassthrough]

@@ -96,10 +96,11 @@ if(Node==NULL) return;
  switch (Column) {
 	case 0:{
 	CellText=(UnicodeString)nodeData->Id;
-    break;
+	break;
 	}
 	case 1:{
-    CellText=(UnicodeString)nodeData->Origin;
+	CellText=(UnicodeString)nodeData->Origin;
+    break;
 	}
  }
 }
@@ -107,7 +108,22 @@ if(Node==NULL) return;
 
 void __fastcall TForm1::Button2Click(TObject *Sender)
 {
-  VirtualStringTree1->Clear();
+	VirtualStringTree1->Clear();
+	Label4->Caption="";
+	Label5->Caption="";
+	Label6->Caption="";
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::VirtualStringTree1AddToSelection(TBaseVirtualTree *Sender,
+          PVirtualNode Node)
+{
+ if(Node==NULL) return;
+ DBStruct *nodeData=(DBStruct*)VirtualStringTree1->GetNodeData(Node);
+
+ Label4->Caption=nodeData->Name;
+ Label5->Caption=nodeData->Description;
+ Label6->Caption=nodeData->Estimated_size;
 }
 //---------------------------------------------------------------------------
 
