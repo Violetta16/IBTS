@@ -1,0 +1,33 @@
+#include <iostream>
+#include<FAT32.h>
+
+class FAT32 : public AbstractFS
+{
+public:
+	FAT32(wchar_t* fileName)
+	{
+	byte *dataBuffer = new byte[512];
+
+	ReedBootRecord(fileName,dataBuffer);
+
+	FAT32BootRecord* pFAT32BootRecord = (FAT32BootRecord*)dataBuffer;
+
+	int Byte=GetDec(pFAT32BootRecord->Byte,sizeof(pFAT32BootRecord->Byte));
+	unsigned long long Sector=GetDec(&pFAT32BootRecord->Sector,sizeof(pFAT32BootRecord->Sector));
+	unsigned long long TotalSector=GetDec(pFAT32BootRecord->TotalSector,sizeof(pFAT32BootRecord->TotalSector));
+
+    Name=L"FAT32";
+	ClusterSizeFS=Byte*Sector;
+	CountClusterFS=TotalSector/Sector;
+	SizeFS=CountClusterFS*ClusterSizeFS;
+
+	delete[] dataBuffer;
+	}
+
+	~FAT32(){
+		ClusterSizeFS=0;
+		CountClusterFS=0;
+		SizeFS=0;
+		CloseHandle(fileHander);
+	}
+};
