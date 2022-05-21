@@ -28,6 +28,6 @@ public:
 		ClusterSizeFS=0;
 		CountClusterFS=0;
 		SizeFS=0;
-		CloseHandle(fileHander);
+		//CloseHandle(fileHander);
 	}
 };

@@ -46,6 +46,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 void __fastcall TForm1::Button3Click(TObject *Sender)
 {
+	wchar_t *fileName=L"\\\\.\\C:";
 	Label1->Caption="";
 	long NumCluster=0;
    byte *dataBuffer = new byte[FileSystem.ClusterSizeFS];
@@ -53,7 +54,7 @@ void __fastcall TForm1::Button3Click(TObject *Sender)
 	   long EditNum=StrToLong(Edit1->Text);
 	   if(EditNum>0 && EditNum<=FileSystem.CountClusterFS)
 		   NumCluster=StrToInt(Edit1->Text);
-	   FileSystem.ReedCluster(NumCluster,dataBuffer);
+	   FileSystem.ReedCluster(fileName,NumCluster,dataBuffer);
 
 		for(int i=0;i<FileSystem.ClusterSizeFS; i++){
 			Label1->Caption+=dataBuffer[i];

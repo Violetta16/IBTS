@@ -24,7 +24,7 @@ protected:
 	FILE_ATTRIBUTE_NORMAL,
 	NULL);
 
-	if(fileHander == INVALID_HANDLE_VALUE)
+    	if(fileHander == INVALID_HANDLE_VALUE)
 	{
 		ShowMessage(L"Ошибка чтения диска C.\nПриложению нужны права администратора.\n");
 		CloseHandle(fileHander);
@@ -62,11 +62,12 @@ public:
 	unsigned int ClusterSizeFS;
 
 
-	void ReedCluster(int NumberCluster, BYTE *outBuffer){
+	void ReedCluster(wchar_t* fileName,int NumberCluster, BYTE *outBuffer){
+
 	LARGE_INTEGER sectorOffset;
 	sectorOffset.QuadPart=ClusterSizeFS*NumberCluster;
-
-	unsigned long currentPosition = SetFilePointer(fileHander,sectorOffset.LowPart,&sectorOffset.HighPart ,FILE_BEGIN);
+	unsigned long currentPosition;
+	currentPosition = SetFilePointer(fileHander,sectorOffset.LowPart,&sectorOffset.HighPart ,FILE_BEGIN);
 
 	 if(currentPosition != sectorOffset.LowPart)  {
 	 }
@@ -76,6 +77,7 @@ public:
 	 bool readResult = ReadFile(fileHander,outBuffer,bytesToRead,&bytesRead,NULL);
 
 	 if(readResult == false || bytesRead != bytesToRead){
+
 	 }
 	}
 

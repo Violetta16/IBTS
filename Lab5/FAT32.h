@@ -10,8 +10,11 @@ typedef struct
 	byte Skip1[11];
 	byte Byte[2];
 	byte Sector;
-	byte Skip2[18];
+	byte Rezerv[2];
+	byte FATSector;
+	byte Skip2[15];
 	byte TotalSector[4];
+	byte FATSize[4];
 } FAT32BootRecord;
 
 #pragma pack(pop)
