@@ -50,7 +50,10 @@ void __fastcall MyThread::Execute()
 	}
 
 	for(iter.First();!iter.IsDone();iter.Next()){
+		if(Form1->RadioGroup1->ItemIndex==0)
 		iter.Reed(dataBuffer);
+		if(Form1->RadioGroup1->ItemIndex==1)
+		IterDecorator(iter).Reed(dataBuffer);
 		AnsiString type=search.Search(dataBuffer);
         if(iter.Position%30000==0)
 		{
